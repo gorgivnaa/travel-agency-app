@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.3'
-	id 'io.spring.dependency-management' version '1.1.7'
+	id 'idea'
+	id 'org.springframework.boot' version '3.2.5'
 }
 
 group = 'by.bsuir'
@@ -13,30 +13,41 @@ java {
 	}
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.mysql:mysql-connector-j'
-	implementation 'org.liquibase:liquibase-core'
-	implementation 'com.h2database:h2'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.2.5'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.2.5'
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.2.5'
+	implementation 'org.mindrot:jbcrypt:0.4'
 
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'mysql:mysql-connector-java:8.0.30'
+	implementation 'org.liquibase:liquibase-core:4.27.0'
+	implementation 'com.h2database:h2:2.2.224'
+	compileOnly 'org.projectlombok:lombok:1.18.32'
+
+	annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.32'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.5'
+
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
+}
+
+
+compileJava{
+	options.encoding="UTF-8"
+}
+
+
+compileTestJava{
+	options.encoding="UTF-8"
 }
