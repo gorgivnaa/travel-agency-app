@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Add User</h2>
+    <form th:action="@{/travel/agency/add}" th:object="${user}" method="post">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
+        </div>
+        <div class="mb-3">
+            <label for="patronymic" class="form-label">Patronymic</label>
+            <input type="text" id="patronymic" class="form-control" th:field="*{patronymic}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" th:field="*{email}" required>
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="tel" id="phoneNumber" class="form-control" th:field="*{phoneNumber}">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control" th:field="*{password}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add User</button>
+    </form>
+</div>
+</body>
+</html>
